@@ -15,7 +15,7 @@ The center circles were inspired by the bass of the speakers when music is playi
 [image of bass](https://noco.co.nz/products/hopestar-a6x-55w-big-bluetooth-speaker-big-bass-triple-speakers-6000mah-battery-tws-powerbank)
 
 The second inspiration was generated from sound waves and the week 11 tutorial part 2. This aims to create surrounding sounds waves from left to right or right to left. The sound can also be controlled though mouse up for volume up and mouse down for volume down. 
-![image of sound wave](assets/what-is-a-sound-a-general-reminder-on-sound-waves-919226.webp.png.png)
+![image of sound wave](assets/what-is-a-sound-a-general-reminder-on-sound-waves-919226.webp)
 [image of sound waves] (https://syos.co/en/blogs/news/what-is-a-sound-a-general-reminder-on-sound-waves)
 
 The third function ‘ripple’ was inspired by the water dripping image that created ripple waves. Gravity wave deep space has also inspired me to use the ripple function to create effects and more interactive and seamless experience when the audio and the effects on fortune wheels.
