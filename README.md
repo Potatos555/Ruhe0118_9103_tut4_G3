@@ -9,6 +9,7 @@ When the music is playing, slowly move the mouse around the canvas, the volume w
 ### Individual animate and inspiration:
 
 **Using approach:** Audio
+
 **Animated Properties:** The center circles of the major wheels are changing colors and sizes. Add new ripples in the gap of the wheels. The core thing I have modified is the small elements in the main wheels. 
 - The center circles were inspired by the bass of the speakers when music is playing such as vibrating with music beats and bass. 
 ![image of bass](assets/hsa6x55-hopestar-55watt-bluetooth-speakerpower-bank-bass-triple-speakers-6000mah-battery-560_750x.jpg)
