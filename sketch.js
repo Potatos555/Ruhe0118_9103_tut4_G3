@@ -1,29 +1,31 @@
 let circleRadius = 75; //define radius
 let initialDotNumber = 60; //define Dotnumber for ellipse
-let dotNumberDecrement = 5; //to make less ellipses in smaller wheel
+let dotNumberDecrement = 7; //to make less ellipses in smaller wheel
 let baseSpacing = 160; //give the gap among wheels
 let drawLinesArray = []; //for lines in the wheel
 let drawArcsArray = []; // for the pink arcs
 let cols, rows, spacing; // to caculate the postion of the wheels
-let sound; //define sound to the song
+let song, analyzer; //define sound of the song, add the sound analyzer
 let amplitude; //for the sound analyzer
+let pan = 0.0; //for the sound conrtol
 
 function preload() {
-  sound = loadSound('assets/current.mp3'); 
+  song = loadSound('assets/current.mp3'); // 确保替换为你实际的音乐文件路径
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   colorMode(HSB);
-  amplitude = new p5.Amplitude();
-  sound.play();
+  analyzer = new p5.Amplitude();
+  analyzer.setInput(song);
+  song.play();
   
-  // to make sure there're enough wheels to fill the canvas
+ // to make sure there're enough wheels to fill the canvas  
   spacing = 160;
   rows = ceil(height / spacing) + 3;
   cols = ceil(width / spacing) + 3;
   
-  // prepare the random value for make sure pink arcs and wheels with lines will be drawn in canvas
+ // prepare the random value to make sure pink arcs and wheels with lines will be drawn in canvas
   for (let i = -2; i < rows; i++) {
     for (let j = -2; j < cols; j++) {
       drawLinesArray.push(random(1) > 0.5);
@@ -36,10 +38,10 @@ function setup() {
 }
 
 function draw() {
-// draw the dynamic wheel which follow the music
-  scale(1.8);
+  // draw the dynamic wheel which follow the music
   push();  
-  translate(width / 2, height / 2);  
+  scale(1.8);
+  translate(width / 2, height / 2); 
   rotate(PI / 3);  
   translate(-width / 2, -height / 2);  
 
@@ -60,7 +62,7 @@ function drawWheelsPattern() {
   scale(1.8);
 
   push();  
-  translate(width / 2, height / 2);  
+  translate(width / 2, height / 2); 
   rotate(PI / 3);  
   translate(-width / 2, -height / 2);  
 
@@ -96,7 +98,6 @@ function drawWheels(x, y, radius, drawLines, drawArcs) {
   ellipse(x, y, ringRadius * 2);
 
   // Using if-else to draw two different kinds of wheels
-    //First kind: contains lines and dots
   if (drawLines) {
     let numLines = 70;
     stroke(random(360), 50, 60);
@@ -106,19 +107,19 @@ function drawWheels(x, y, radius, drawLines, drawArcs) {
     beginShape(); // Begin defining a shape
     for (let k = 0; k < numLines; k++) {
       let angle = TWO_PI / numLines * k;
-      let startX = x + cos(angle) * radius * 0.67;
-      let startY = y + sin(angle) * radius * 0.67;
-      let endX = x + cos(angle) * radius * 0.91;
-      let endY = y + sin(angle) * radius * 0.91;
+      let startX = x + cos(angle) * radius * 0.71;
+      let startY = y + sin(angle) * radius * 0.71;
+      let endX = x + cos(angle) * radius * 0.92;
+      let endY = y + sin(angle) * radius * 0.92;
       vertex(startX, startY); 
-      vertex(endX, endY);
+      vertex(endX, endY); 
     }
     endShape(CLOSE); // End shape definition and close shape
 
     let dotColor = color(random(360), 50, 60);
 
     for (let i = 0; i < 3; i++) {
-      let dotRingRadius = radius * (1 - i * 0.12);
+      let dotRingRadius = radius * (1 - i * 0.11);
       let numDots = dotNumber[i];
       for (let j = 0; j < numDots; j++) {
         let angle = j * TWO_PI / numDots;
@@ -126,28 +127,37 @@ function drawWheels(x, y, radius, drawLines, drawArcs) {
         let dotY = y + sin(angle) * dotRingRadius * 0.63;
         fill(dotColor);
         noStroke();
-        ellipse(dotX, dotY, 5);
+        ellipse(dotX, dotY, 4);
       }
     }
-  }
+  } 
   //Second kind: only contain dots
   else {
     let dotColor = color(random(360), 50, 60);
-
     for (let i = 0; i < numDotRings; i++) {
       let dotRingRadius = radius * (1 - i * 0.1);
       let numDots = dotNumber[i];
       for (let j = 0; j < numDots; j++) {
         let angle = j * TWO_PI / numDots;
-        let dotX = x + cos(angle) * dotRingRadius * 0.95;
-        let dotY = y + sin(angle) * dotRingRadius * 0.95;
+        let dotX = x + cos(angle) * dotRingRadius * 0.93;
+        let dotY = y + sin(angle) * dotRingRadius * 0.93;
         fill(dotColor);
         noStroke();
-        ellipse(dotX, dotY, 6);
+        ellipse(dotX, dotY, 7, 5);
       }
     }
   }
 
+ // Draw a Center circle to make sure the wheel has center circle before the music starts
+ let numInnerCircles = 5;
+ for (let i = 0; i < numInnerCircles; i++) {
+   let innerRadius = radius * 0.5 * (1 - i * 0.2);
+   fill(color(random(330), 50, random(30, 90)));
+   stroke(color(random(330), 50, random(30, 90)));
+   strokeWeight(1)
+   ellipse(x, y, innerRadius * 1.8);
+ }
+ 
   // Pink arcs
   if (drawArcs) {
     stroke(348, 63, 90);
@@ -162,8 +172,8 @@ function drawWheels(x, y, radius, drawLines, drawArcs) {
 
 function drawDynamicCircles(x, y, radius) {
   // get the volum level of the music
-  let level = amplitude.getLevel();
-  let sizeFactor = map(level, 0, 1, 0.5, 2); 
+  let volume = analyzer.getLevel();
+  let sizeFactor = map(volume, 0, 1, 0, 3); 
   let numInnerCircles = 5;
 
   // draw the dynamic ellipse following the music
@@ -182,11 +192,21 @@ function windowResized() {
   drawWheelsPattern();
 }
 
-//Control the play/pause of music
+//Control wheather play music
 function mousePressed() {
-  if (sound.isPlaying()) {
-    sound.pause();
+  if (song.isPlaying()) {
+    song.pause();
   } else {
-    sound.play();
+    song.play();
   }
 }
+
+//Function that conrtoling the music
+//The Volume goes up and down with the Y-axel of the mouse
+//The stereo with change with the X-axel if the mouse
+function mouseMoved() {
+  volume = map(mouseY, 0, height, 1, 0);
+  song.setVolume(volume);
+  pan = map(mouseX, 0, width, -1, 1);
+  song.pan(pan);
+}   
