@@ -8,17 +8,17 @@ When the music is playing, slowly move the mouse around the canvas, the volume w
 
 ### Individual animate and inspiration:
 
-Using approach: Audio
-Animated Properties : The center circles of the major wheels are changing colors and sizes. Add new ripples in the gap of the wheels. The core thing I have modified is the small elements in the main wheels. 
-The center circles were inspired by the bass of the speakers when music is playing such as vibrating with music beats and bass. 
+**Using approach:** Audio
+**Animated Properties:** The center circles of the major wheels are changing colors and sizes. Add new ripples in the gap of the wheels. The core thing I have modified is the small elements in the main wheels. 
+- The center circles were inspired by the bass of the speakers when music is playing such as vibrating with music beats and bass. 
 ![image of bass](assets/hsa6x55-hopestar-55watt-bluetooth-speakerpower-bank-bass-triple-speakers-6000mah-battery-560_750x.jpg)
 [image of bass](https://noco.co.nz/products/hopestar-a6x-55w-big-bluetooth-speaker-big-bass-triple-speakers-6000mah-battery-tws-powerbank)
 
-The second inspiration was generated from sound waves and the week 11 tutorial part 2. This aims to create surrounding sounds waves from left to right or right to left. The sound can also be controlled though mouse up for volume up and mouse down for volume down. 
+- The second inspiration was generated from sound waves and the week 11 tutorial part 2. This aims to create surrounding sounds waves from left to right or right to left. The sound can also be controlled though mouse up for volume up and mouse down for volume down. 
 ![image of sound wave](assets/what-is-a-sound-a-general-reminder-on-sound-waves-919226.webp)
 [image of sound waves] (https://syos.co/en/blogs/news/what-is-a-sound-a-general-reminder-on-sound-waves)
 
-The third function ‘ripple’ was inspired by the water dripping image that created ripple waves. Gravity wave deep space has also inspired me to use the ripple function to create effects and more interactive and seamless experience when the audio and the effects on fortune wheels.
+- The third function ‘ripple’ was inspired by the water dripping image that created ripple waves. Gravity wave deep space has also inspired me to use the ripple function to create effects and more interactive and seamless experience when the audio and the effects on fortune wheels.
 ![image of water ripple wave](assets/Screen%20Shot%202024-05-31%20at%2023.30.27.png)
 [image of water ripple wave] (https://savvy.directorprep.com/blog/the-ripple-effect)
 ![image of gravity wave deep space](assets/Screen%20Shot%202024-05-31%20at%2023.30.16.png)
@@ -26,4 +26,8 @@ The third function ‘ripple’ was inspired by the water dripping image that cr
 
 
 ### Techniques
-The individual technique used in creating the fortune wheel artwork focuses on changing sizes and colors of the circle components using volume level analyzer and HSB color random mode. Then the music interaction is made by mouse move and pan analysis. The last technique focused on creating ripples with opacity is done by FFT analysis and the ripple drawing function. All these techniques mentioned above have allowed me to bring my imagination effectively and seamlessly to life via P5js. 
+1. The individual technique used in creating the fortune wheel artwork focuses on changing sizes and colors of the circle components using volume level analyzer and HSB color random mode. 
+2. Then the music interaction is made by mouse move and pan analysis. 
+3. The last technique focused on creating ripples with opacity is done by FFT analysis and the ripple drawing function.
+
+- All these techniques mentioned above have allowed me to bring my imagination effectively and seamlessly to life via P5js. 
